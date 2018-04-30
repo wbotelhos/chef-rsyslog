@@ -1,4 +1,4 @@
-module(load="" PollingInterval="<%= node['chef-rsyslog']['polling_interval'] %>") # provides file read as stream
+module(load="imfile" PollingInterval="<%= node['chef-rsyslog']['polling_interval'] %>") # provides file read as stream
 module(load="imklog")                      # provides kernel logging support
 module(load="imuxsock")                    # provides support for local system logging
 

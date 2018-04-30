@@ -4,7 +4,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 maintainer       'Washington Botelho'
 maintainer_email 'wbotelhos@gmail.com'
 name             'chef-rsyslog'
-version          '0.1.0'
+version          '0.1.1'
 
 recipe 'chef-rsyslog::compile',               'Compiles the source code.'
 recipe 'chef-rsyslog::config',                'Create config file.'

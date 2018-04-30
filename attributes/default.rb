@@ -4,14 +4,14 @@ default['chef-rsyslog']['configure'] = %w[--enable-imfile]
 default['chef-rsyslog']['files']     = []
 default['chef-rsyslog']['modules']   = {}
 
-default['chef-rsyslog']['dir_create_mode']    = 0755
-default['chef-rsyslog']['file_create_mode']   = 0640
+default['chef-rsyslog']['dir_create_mode']    = '0755'
+default['chef-rsyslog']['file_create_mode']   = '0640'
 default['chef-rsyslog']['file_group']         = 'root'
 default['chef-rsyslog']['file_owner']         = 'root'
 default['chef-rsyslog']['polling_interval']   = 5
 default['chef-rsyslog']['priv_drop_to_group'] = 'root'
 default['chef-rsyslog']['priv_drop_to_user']  = 'root'
-default['chef-rsyslog']['umask']              = 0022
+default['chef-rsyslog']['umask']              = '0022'
 
 default['chef-rsyslog']['source']['checksum']  = '18330a9764c55d2501b847aad267292bd96c2b12fa5c3b92909bd8d4563c80a9'
 default['chef-rsyslog']['source']['extension'] = 'tar.gz'

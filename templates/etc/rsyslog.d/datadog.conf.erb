@@ -1,0 +1,11 @@
+$template DatadogFormat,"<%= node['chef-rsyslog']['modules']['datadog']['api_key'] %> <%%pri%>%protocol-version% %timestamp:::date-rfc3339% %HOSTNAME% %app-name% - - - %msg%\n"
+
+ruleset(name="infiles") {
+  action(type="omfwd" target="intake.logs.datadoghq.com" protocol="tcp" port="10514" template="DatadogFormat")
+}
+
+<% node['chef-rsyslog']['files'].each do |data| %>
+  <% file_name, tag = data.split(' ') %>
+
+  input(File="<%= file_name %>" ruleset="infiles" Tag="<%= tag || file_name.gsub('/', '_') %>" type="imfile")
+<% end %>

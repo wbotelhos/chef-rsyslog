@@ -1,0 +1,25 @@
+module(load="" PollingInterval="<%= node['chef-rsyslog']['polling_interval'] %>") # provides file read as stream
+module(load="imklog")                      # provides kernel logging support
+module(load="imuxsock")                    # provides support for local system logging
+
+module(load="imudp")
+input(type="imudp" port="514")
+
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat # Use traditional timestamp format.
+$RepeatedMsgReduction on                                 # Filter duplicated messages
+
+# Set the default permissions for all log files.
+
+$DirCreateMode <%= node['chef-rsyslog']['dir_create_mode'] %>
+$FileCreateMode <%= node['chef-rsyslog']['file_create_mode'] %>
+$FileGroup <%= node['chef-rsyslog']['file_group'] %>
+$FileOwner <%= node['chef-rsyslog']['file_owner'] %>
+$PrivDropToGroup <%= node['chef-rsyslog']['priv_drop_to_group'] %>
+$PrivDropToUser <%= node['chef-rsyslog']['priv_drop_to_user'] %>
+$Umask <%= node['chef-rsyslog']['umask'] %>
+
+$WorkDirectory /var/spool/rsyslog    # Where to place spool and state files
+$IncludeConfig /etc/rsyslog.d/*.conf # Include all config files in /etc/rsyslog.d/
